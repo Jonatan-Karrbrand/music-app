@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style/app.min.css'
+import '../style/components/app.min.css'
 
 class Profile extends Component {
 
@@ -10,11 +10,15 @@ class Profile extends Component {
     return (
       <div className="profile">
         <a href={artist.external_urls.spotify}>
-        <img
-          alt="Profile"
-          className="profile-img"
-          src={artist.images[2].url}
-        />
+        { artist.images[2] ?
+          <img
+            alt="Profile"
+            className="profile-img"
+            src={artist.images[2].url}
+            />
+          :
+          <div>No profile picture</div>
+        }
         </a>
         <div className="profile-info">
           <h2 className="profile-name">{artist.name}</h2>

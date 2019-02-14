@@ -1,0 +1,45 @@
+// CSS for Get Recommendation application
+@import '../variables/colors.scss';
+
+.get-recommendation-component {
+
+    .recommended-track {
+      width: 320px;
+      height: 320px;
+
+    .recommended-track-img {
+      width: 320px;
+      height: 320px;
+    }
+
+    .recommended-track-play {
+      width: 320px;
+      height: 320px;
+    }
+
+    .recommended-track-play-inner {
+      margin-left: 130px;
+      margin-top: 130px;
+    }
+
+  }
+
+  .music-controls{
+    img {
+      width: 60px;
+      transition: all .2s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .music-info {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}

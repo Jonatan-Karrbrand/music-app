@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import '../style/app.min.css';
+import '../style/components/app.min.css';
 import queryString from 'query-string';
 import {ButtonToolbar,ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
 
@@ -22,12 +22,12 @@ class TopTracks extends PureComponent {
 
   render() {
     return (
-      <div className="padding-between">
-        <h1>Your top tracks and artists</h1>
+      <div>
+        <h2>Your top tracks and artists</h2>
           <div>
-            <h4>Time range</h4>
+            <h5>Time range</h5>
              <ButtonToolbar>
-              <ToggleButtonGroup  className="options" defaultValue={2} type="radio" name="options">
+              <ToggleButtonGroup  className="options mx-auto" defaultValue={2} type="radio" name="options">
                 <ToggleButton onClick={() => this.search('short')} className="option-button" value={1}>Short</ToggleButton>
                 <ToggleButton onClick={() => this.search('medium')} className="option-button" value={2}>Medium</ToggleButton>
                 <ToggleButton onClick={() => this.search('long')} className="option-button" value={3}>Long</ToggleButton>
@@ -55,7 +55,7 @@ class TopTracks extends PureComponent {
 
         <br/>
         { this.state.hasNoPreview
-          && <h4>Ops, this song doesn't have any preview</h4>
+          && <h4 className="error-message">Ops, this song doesn't have any preview</h4>
         }
         {this.state.topTracks.map((track, key) => {
           const trackImg = track.album.images[0].url;

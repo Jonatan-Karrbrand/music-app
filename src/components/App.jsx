@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import './style/app.min.css';
-import {FormGroup, FormControl, InputGroup, Glyphicon, Button} from 'react-bootstrap';
-import Profile from './Profile';
-import Gallery from './Gallery';
-import TopTracks from './top-tracks/Top-tracks.jsx';
-
+import '../style/components/app.min.css';
 import queryString from 'query-string';
+// Bootstrap
+import {FormGroup, FormControl, InputGroup, Glyphicon, Button} from 'react-bootstrap';
+// Components
+import Profile from './Profile';
+import Gallery from './Gallery.jsx';
+import TopTracks from './Top-tracks.jsx';
+import GetRecommendation from './Get-recommendation.jsx';
+
 
 class App extends Component {
 
@@ -34,8 +37,8 @@ class App extends Component {
                 </li>
               </ul>
             </nav>
-              <div className="padding-between">
-                <h1>Artist information</h1>
+              <div className="py-3">
+                <h2>Artist information</h2>
                 <FormGroup>
                   <InputGroup>
                     <FormControl type="text" className="form" placeholder="Search for an Artist" query={this.state.query} onChange={event => {
@@ -57,15 +60,19 @@ class App extends Component {
                     : <div>
                         {
                           this.state.artist === undefined
-                            ? <h4>Sorry, dont find any artist with that name</h4>
+                            ? <h5 className="pt-3">Sorry, didn't find any artist with that name</h5>
                             : <div></div>
                         }
                       </div>
                 }
               </div>
 
-              <div className="padding-between">
+              <div className="py-3">
                 <TopTracks></TopTracks>
+              </div>
+
+              <div className="py-3">
+                <GetRecommendation></GetRecommendation>
               </div>
 
             </React.Fragment>
@@ -119,7 +126,7 @@ class App extends Component {
       this.fetch();
     }
   }
-  
+
   fetch() {
     const values = queryString.parse(window.location.search);
     const ACCESS_TOKEN = values.access_token;
