@@ -100,6 +100,8 @@ class TopTracks extends PureComponent {
       this.setState({hasNoPreview: false})
 
       let audio = new Audio(previewUrl);
+      audio.volume = this.props.musicVolume;
+
       if (!this.state.playing) {
         audio.play();
         this.setState({

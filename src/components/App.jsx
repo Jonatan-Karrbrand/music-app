@@ -14,6 +14,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       query: '',
       artist: null,
@@ -21,11 +22,14 @@ class App extends Component {
       tracks: [],
       userInfo: {},
       addAnimationClass: true,
-      notFirstSearch: false
+      notFirstSearch: false,
+      musicVolume: 0.5,
+      test: 1
     }
   }
 
   render() {
+    console.log(this.state.test)
     return (<div className="App">
       {
         this.state.isLoggedIn
@@ -34,6 +38,11 @@ class App extends Component {
               <ul>
                 <li>
                   <a href={this.state.userInfo.url}>{this.state.userInfo.name}</a>
+                </li>
+                <li>
+                  <input type="range" class="form-control-range music-volume" id="formControlRange"
+                    onChange={event => this.setState({musicVolume: event.target.value / 100})}
+                    />
                 </li>
               </ul>
             </nav>
@@ -55,7 +64,7 @@ class App extends Component {
                   this.state.artist !== undefined && this.state.artist !== null
                     ? <div className={(this.state.addAnimationClass ? "fade-in" : "fade-out")}>
                         <Profile artist={this.state.artist}/>
-                        <Gallery tracks={this.state.tracks}/>
+                        <Gallery tracks={this.state.tracks} musicVolume={this.state.musicVolume}/>
                       </div>
                     : <div>
                         {
@@ -68,11 +77,11 @@ class App extends Component {
               </div>
 
               <div className="py-3">
-                <TopTracks></TopTracks>
+                <TopTracks musicVolume={this.state.musicVolume}></TopTracks>
               </div>
 
               <div className="py-3">
-                <GetRecommendation></GetRecommendation>
+                <GetRecommendation musicVolume={this.state.musicVolume}></GetRecommendation>
               </div>
 
             </React.Fragment>

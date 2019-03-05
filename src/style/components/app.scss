@@ -13,14 +13,18 @@ body {
   color: $main-color;
 }
 
-// End of global CSS
-
 .App {
   text-align: center;
   padding: 40px 0;
   width: 70%;
   margin: auto;
 }
+
+.music-volume {
+  width: 200px;
+}
+
+// End of global CSS
 
 .padding-between{
   margin: 20px 0;
@@ -45,6 +49,11 @@ nav {
 
   ul {
     list-style-type: none;
+
+    li {
+      float: right;
+      margin-left: 3rem;
+    }
   }
 
   a {

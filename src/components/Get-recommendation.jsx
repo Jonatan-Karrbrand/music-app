@@ -31,12 +31,12 @@ class GetRecommendation extends PureComponent {
   render() {
     var recommendedTrack = this.state.recommendedTracks;
     var position = this.state.trackListPosition;
-    console.log(this.state.recommendedTracks)
 
     return (
       <React.Fragment>
         { recommendedTrack ?
           <div className="get-recommendation-component">
+
             <h2 className="mb-4">Find your new favorite</h2>
             { this.state.hasNoPreview
               && <h4 className="error-message">Ops, this song doesn't have any preview</h4>
@@ -205,10 +205,12 @@ class GetRecommendation extends PureComponent {
 
   playAudio(previewUrl) {
     let audio = new Audio(previewUrl);
-    audio.volume = 0.6;
+    audio.volume = this.props.musicVolume;
 
     if (!previewUrl) {
-      this.state.audio.pause();
+      if (this.state.audio !== null) {      
+        this.state.audio.pause();
+      }
       this.setState({hasNoPreview: true, playing: false})
     }
     else {
