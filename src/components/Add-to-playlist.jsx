@@ -9,18 +9,21 @@ class AddToPlaylist extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+
     }
   }
 
   render() {
     return (
       <div>
-        <ButtonToolbar>
+{/*        <ButtonToolbar>
          <ToggleButtonGroup  className="options mx-auto" defaultValue={2} type="radio" name="options">
            <ToggleButton onClick={() => this.search('short')} className="option-button mt-3" value={1}>Add to playlist</ToggleButton>
          </ToggleButtonGroup>
-       </ButtonToolbar>
+       </ButtonToolbar>*/}
+       <button onClick={() => this.search('short')} className="my-btn-primary mt-3">
+          Add to playlist
+       </button>
       </div>
     );
   }
